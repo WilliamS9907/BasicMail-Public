@@ -6,6 +6,8 @@
         xmlns:local="clr-namespace:BasicMail"
         mc:Ignorable="d"
         WindowStartupLocation="CenterOwner"
+        MinHeight="310"
+        MinWidth="525"
         Title="Action Log" Height="310" Width="525">
     <Grid>
         <ListBox x:Name="logEntries_listBox" SelectionChanged="logEntries_listBox_SelectionChanged" d:ItemsSource="{d:SampleData ItemCount=5}" HorizontalAlignment="Left" DisplayMemberPath="title" Width="96" Margin="5,29,0,5"/>
