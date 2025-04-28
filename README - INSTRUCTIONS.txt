@@ -2,6 +2,14 @@ Libraries: Mailkit, Mimekit, Newtonsoft, BasicMailAPI (in-house), BasicMailShare
 Language: C#
 Framework/Frontend: WPF
 
+For Composing:
+Cc and Bcc both use commas as a delimiter for multiple emails.
+
+Example:
+william@cabbage4sage.com, cfcmodwill@gmail.com
+
+The To field can only take a single email.
+
 BasicMail is a basic email client that loads the newest 50 emails (doesn't check for statuses such as unread, read, etc.)
 from a mailbox address and allows for replying/composing new emails based off of a pre-determined SMTP/IMAP server.
 
