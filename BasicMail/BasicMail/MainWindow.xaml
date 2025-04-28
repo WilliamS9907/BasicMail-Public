@@ -26,9 +26,11 @@
             </StackPanel>
         </DockPanel>
 
-        <Button x:Name="compose_button" IsEnabled="{Binding Path=LoggedIn}" Content="Compose" Click="compose_button_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Width="64" Margin="129,26,0,0"/>
+        <Button x:Name="compose_button" IsEnabled="{Binding Path=LoggedIn}" Content="Compose" Click="compose_button_Click" VerticalAlignment="Top" HorizontalAlignment="Right" Width="64" Margin="0,26,15,0"/>
 
-        <ListBox x:Name="inbox_listBox" SelectionChanged="inbox_listBox_SelectionChanged" DisplayMemberPath="Subject" HorizontalAlignment="Left" d:ItemsSource="{d:SampleData ItemCount=5}" ItemsSource="{Binding Path=Emails}" Margin="5,36,0,10" Width="120" Height="auto"/>
+        <Button x:Name="refresh_button" IsEnabled="{Binding Path=IsEmailSendingInUse}" Content="Refresh" Click="refresh_button_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Width="64" Margin="61,21,0,0"/>
+
+        <ListBox x:Name="inbox_listBox" SelectionChanged="inbox_listBox_SelectionChanged" DisplayMemberPath="Subject" HorizontalAlignment="Left" d:ItemsSource="{d:SampleData ItemCount=5}" ItemsSource="{Binding Path=Emails}" Margin="5,44,0,10" Width="120" Height="auto"/>
 
         <TextBlock x:Name="mailHeader_textBlock" FontWeight="Bold" HorizontalAlignment="Left" Margin="131,49,0,0" TextWrapping="Wrap" d:Text="Header" Text="{Binding Path=Header}" VerticalAlignment="Top" Width="auto" Height="26" FontSize="17"/>
 
@@ -114,7 +116,7 @@
                         </Style>
                     </TextBlock.Style>
                 </TextBlock>
-                
+
                 <TextBox x:Name="composeBcc_textBox" IsEnabled="{Binding Path=IsEmailSendingInUse}" TextWrapping="NoWrap" HorizontalAlignment="Left" Margin="4,79,0,0" Text="" VerticalAlignment="Top" Width="462"/>
                 <TextBlock x:Name="composeBccWatermark_textBlock" Text="Bcc..." IsHitTestVisible="False" Opacity="0.75" Foreground="#FFA2A2A2" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="12" FontWeight="Bold" Width="64" Margin="7,80,0,0">
                     <TextBlock.Style>
@@ -134,7 +136,7 @@
                         </Style>
                     </TextBlock.Style>
                 </TextBlock>
-                
+
                 <TextBox x:Name="composeSubject_textBox" IsEnabled="{Binding Path=IsEmailSendingInUse}" TextWrapping="NoWrap" HorizontalAlignment="Left" Margin="4,102,0,0" Text="" VerticalAlignment="Top" Width="462"/>
                 <TextBlock x:Name="composeSubjectWatermark_textBlock" Text="Subject..." IsHitTestVisible="False" Opacity="0.75" Foreground="#FFA2A2A2" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="12" FontWeight="Bold" Width="64" Margin="7,103,0,0">
                     <TextBlock.Style>
@@ -154,7 +156,7 @@
                         </Style>
                     </TextBlock.Style>
                 </TextBlock>
-                
+
                 <TextBox x:Name="composeBody_textBox" IsEnabled="{Binding Path=IsEmailSendingInUse}" TextWrapping="Wrap" HorizontalAlignment="Center" Margin="0,125,0,0" Text="" VerticalAlignment="Top" Width="478" Height="148"/>
                 <TextBlock x:Name="composeBodyWatermark_textBlock" Text="Body..." IsHitTestVisible="False" Opacity="0.75" Foreground="#FFA2A2A2" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="15" FontWeight="Bold" Width="64" Margin="7,123,0,0">
                     <TextBlock.Style>
@@ -174,7 +176,7 @@
                         </Style>
                     </TextBlock.Style>
                 </TextBlock>
-                
+
                 <TextBlock x:Name="composeError_textBlock" Text="{Binding Path=ComposeErrorMessage}" Margin="10,278,123,27" Foreground="Red" FontSize="10" />
 
                 <Button x:Name="composeSend_button" IsEnabled="{Binding Path=IsEmailSendingInUse}" Click="composeSend_button_Click" Content="Send" Margin="385,283,13,15"/>
@@ -196,6 +198,6 @@
             </Grid>
         </Border>
 
-        <TextBlock x:Name="inboxHeader_textBlock" HorizontalAlignment="Left" Margin="5,20,0,0" TextWrapping="Wrap" Text="Inbox" VerticalAlignment="Top"/>
+        <TextBlock x:Name="inboxHeader_textBlock" HorizontalAlignment="Left" Margin="5,28,0,0" TextWrapping="Wrap" Text="Inbox" VerticalAlignment="Top"/>
     </Grid>
 </Window>

@@ -69,6 +69,10 @@ namespace BasicMail
             {
                 Configuration appConfig = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
 
+                Globals.mainView.LoggedIn = false;
+                Globals.mainView.DisplayLoginPanel = true;
+                inbox_listBox.IsEnabled = false;
+
                 if (inbox_listBox.SelectedItem != null)
                 {
                     inbox_listBox.SelectedItem = null;
@@ -92,6 +96,7 @@ namespace BasicMail
                                                                                        authenticationFeedback_textBlock,
                                                                                        this);
 
+                inbox_listBox.IsEnabled = true;
                 Globals.mainView.LoggingIn = false;
                 Globals.mainView.LoggedIn = true;
                 Globals.mainView.DisplayLoginPanel = false;
@@ -114,6 +119,11 @@ namespace BasicMail
                 Globals.mainView.LoggedIn = false;
                 Globals.mainView.DisplayLoginElements = true;
             }
+        }
+
+        private void refresh_button_Click(object sender, RoutedEventArgs e)
+        {
+            _ = AttemptLoginAsync();
         }
         #endregion User Authorization
 

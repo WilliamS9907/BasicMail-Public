@@ -53,8 +53,8 @@ namespace BasicMailAPI
         #endregion Authorization
 
         #region Inbox and GetUserMailboxAddress
-        private static ObservableCollection<Email> GetInbox(IMailFolder inbox, TextBlock statusTextBlock,
-                                                            Window statusTextBlockOwner)
+        public static ObservableCollection<Email> GetInbox(IMailFolder inbox, TextBlock statusTextBlock,
+                                                           Window statusTextBlockOwner)
         {
             ObservableCollection<Email> emails = new ObservableCollection<Email>();
             Int32 emailCount = 0;
