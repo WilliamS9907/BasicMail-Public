@@ -1,0 +1,21 @@
+﻿<Window x:Class="BasicMail.ActionLogWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BasicMail"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterOwner"
+        Title="ActionLogWindow" Height="310" Width="525">
+    <Grid>
+        <ListBox x:Name="logEntries_listBox" SelectionChanged="logEntries_listBox_SelectionChanged" d:ItemsSource="{d:SampleData ItemCount=5}" HorizontalAlignment="Left" DisplayMemberPath="title" Width="96" Margin="5,29,0,5"/>
+        <Button x:Name="openLog_button" Content="Open Log" Click="openLog_button_Click" HorizontalAlignment="Left" Margin="8,4,0,0" VerticalAlignment="Top" Width="90"/>
+        
+        <ScrollViewer x:Name="logEntry_scrollViewer"  Margin="106,10,10,5">
+            <Grid x:Name="logEntry_Grid">
+                <TextBlock x:Name="logEntry_textBlock" TextWrapping="Wrap"/>
+            </Grid>
+        </ScrollViewer>
+
+    </Grid>
+</Window>
