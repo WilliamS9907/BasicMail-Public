@@ -127,6 +127,7 @@ namespace BasicMail
         {
             Boolean sendingFailed = false;
             Exception reportedException = new Exception();
+            Email? inboxSelection = inbox_listBox.SelectedItem != null ? (Email)inbox_listBox.SelectedItem! : null;
 
             reply_button.Content = "Replying...";
             Globals.mainView.SendingEmail = true;
@@ -135,25 +136,25 @@ namespace BasicMail
             {
                 try
                 {
-                    if (inbox_listBox.SelectedItem != null)
+                    if (inboxSelection != null)
                     {
                         await this.Dispatcher.Invoke(async () =>
                         {
-                            MimeMessage originalEmail = ((Email)inbox_listBox.SelectedItem).originalEmail!;
                             MimeMessage reply;
 
                             Globals.mainView.ReplyErrorMessage = "";
 
-                            reply = EmailHandler.CreateReply(originalEmail!,
+                            reply = EmailHandler.CreateReply(((Email)inboxSelection).originalEmail!,
                                                              sendReplyInput_textBox.Text,
                                                              (Boolean)replyToAll_checkBox.IsChecked!);
 
                             await CallAPIToSendEmail(reply);
 
-                            Globals.mainView.Actions.Add(Common.GetActionLogEntry(originalEmail.Subject, "N/A", Globals.mainView.Username,
-                                                                                  originalEmail.From.ToString(), originalEmail.Cc != null ? originalEmail.Cc.ToString() : "",
-                                                                                  originalEmail.Bcc != null ? originalEmail.Bcc.ToString() : "",
-                                                                                  originalEmail.Subject, sendReplyInput_textBox.Text, EmailStatus.Sent));
+                            Globals.mainView.Actions.Add(Common.GetActionLogEntry(((Email)inboxSelection).originalEmail!.Subject, "N/A", Globals.mainView.Username,
+                                                                                  ((Email)inboxSelection).originalEmail!.From.ToString(),
+                                                                                  ((Email)inboxSelection).originalEmail!.Cc != null ? ((Email)inboxSelection).originalEmail!.Cc.ToString() : "",
+                                                                                  ((Email)inboxSelection).originalEmail!.Bcc != null ? ((Email)inboxSelection).originalEmail!.Bcc.ToString() : "",
+                                                                                  ((Email)inboxSelection).originalEmail!.Subject, sendReplyInput_textBox.Text, EmailStatus.Sent));
 
                             ResetReplyFrameworkElements();
 

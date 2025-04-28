@@ -28,7 +28,7 @@
 
         <Button x:Name="compose_button" IsEnabled="{Binding Path=LoggedIn}" Content="Compose" Click="compose_button_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Width="64" Margin="129,26,0,0"/>
 
-        <ListBox x:Name="inbox_listBox" IsEnabled="{Binding Path=IsEmailSendingInUse}" SelectionChanged="inbox_listBox_SelectionChanged" DisplayMemberPath="Subject" HorizontalAlignment="Left" d:ItemsSource="{d:SampleData ItemCount=5}" ItemsSource="{Binding Path=Emails}" Margin="5,36,0,10" Width="120" Height="auto"/>
+        <ListBox x:Name="inbox_listBox" SelectionChanged="inbox_listBox_SelectionChanged" DisplayMemberPath="Subject" HorizontalAlignment="Left" d:ItemsSource="{d:SampleData ItemCount=5}" ItemsSource="{Binding Path=Emails}" Margin="5,36,0,10" Width="120" Height="auto"/>
 
         <TextBlock x:Name="mailHeader_textBlock" FontWeight="Bold" HorizontalAlignment="Left" Margin="131,49,0,0" TextWrapping="Wrap" d:Text="Header" Text="{Binding Path=Header}" VerticalAlignment="Top" Width="auto" Height="26" FontSize="17"/>
 
