@@ -23,11 +23,6 @@ namespace BasicMailAPI
 
                     smtp.Authenticate(username, Common.SecureStringToString(password));
 
-                    if (smtp.Capabilities.HasFlag(SmtpCapabilities.Dsn))
-                    {
-                        MessageBox.Show("Yes");
-                    }
-
                     smtp.Send(email);
 
                     smtp.Disconnect(true);
