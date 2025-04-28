@@ -129,8 +129,13 @@ namespace BasicMailAPI
 
         private static MailboxAddress ValidateMailboxAddressFromStringList(List<String> addresses, String username)
         {
-            return MailboxAddress.Parse(addresses.Where(address => address.Trim().Contains(username, StringComparison.OrdinalIgnoreCase))
-                                                 .FirstOrDefault());
+            if (addresses.Where(address => address.Trim().Contains(username, StringComparison.OrdinalIgnoreCase)).Count() > 0)
+            {
+                return MailboxAddress.Parse(addresses.Where(address => address.Trim().Contains(username, StringComparison.OrdinalIgnoreCase))
+                                                     .FirstOrDefault());
+            }
+
+            return null!;
         }
         #endregion Inbox and GetUserMailboxAddress
 

@@ -139,7 +139,7 @@ namespace BasicMailAPI
 
             foreach (String mailboxAddress in rawMailboxAddresses)
             {
-                convertedMailboxAddresses.Add(new MailboxAddress("", mailboxAddress));
+                convertedMailboxAddresses.Add(new MailboxAddress("", mailboxAddress.Trim()));
             }
 
             return convertedMailboxAddresses;
