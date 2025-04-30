@@ -4,7 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BasicMail"
-        xmlns:CustomFrameworkElements="clr-namespace:BasicMail.CustomFrameworkElements" x:Class="BasicMail.MainWindow"
+        xmlns:CustomFrameworkElements="clr-namespace:BasicMail.CustomFrameworkElements" 
+        x:Class="BasicMail.MainWindow"
         mc:Ignorable="d"
         MinHeight="475"
         MinWidth="800"
@@ -26,9 +27,24 @@
             </StackPanel>
         </DockPanel>
 
-        <Button x:Name="compose_button" IsEnabled="{Binding Path=LoggedIn}" Content="Compose" Click="compose_button_Click" VerticalAlignment="Top" HorizontalAlignment="Right" Width="64" Margin="0,26,15,0"/>
+        <Button x:Name="compose_button" Style="{StaticResource NoHighlight}" IsEnabled="{Binding Path=LoggedIn}" Click="compose_button_Click" VerticalAlignment="Top" HorizontalAlignment="Right" Width="120" Margin="0,21,15,0" Height="28">
+            <Grid x:Name="compose_button_controlGrid" Height="{Binding ActualHeight, ElementName=compose_button}" Width="{Binding ActualWidth, ElementName=compose_button}">
+                <Border x:Name="compose_button_highlightRect" Background="DarkGray" Opacity="0.0" CornerRadius="5" Margin="-1,-1,1,0"/>
+                <TextBlock x:Name="compose_button_textBlock" Text="Compose" TextAlignment="Center" Foreground="Black" Margin="30,1,0,0" FontSize="17"/>
+                <Image x:Name="compose_button_image" RenderOptions.BitmapScalingMode="HighQuality" Stretch="Uniform" Source="/Images/ComposeIcon.png" Margin="-1,0,77,0"/>
+            </Grid>
+        </Button>
 
-        <Button x:Name="refresh_button" IsEnabled="{Binding Path=IsEmailSendingInUse}" Content="Refresh" Click="refresh_button_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Width="64" Margin="61,21,0,0"/>
+        <Button x:Name="refresh_button" Style="{StaticResource RefreshButton}" IsEnabled="{Binding Path=IsEmailSendingInUse}" Click="refresh_button_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Width="24" Margin="101,21,0,0" Height="21">
+            <Grid x:Name="refresh_button_controlGrid" Height="{Binding ActualHeight, ElementName=refresh_button}" Width="{Binding ActualWidth, ElementName=refresh_button}">
+                <Border x:Name="refresh_button_highlightRect" Background="DarkGray" Opacity="0.0" CornerRadius="5"/>
+                <Image x:Name="refresh_button_image" RenderOptions.BitmapScalingMode="HighQuality" RenderTransformOrigin="0.5,0.5" Stretch="Uniform" Source="/Images/RefreshIcon.png">
+                    <Image.RenderTransform>
+                        <RotateTransform x:Name="refreshImageRotateTransform" Angle="0.0"/>
+                    </Image.RenderTransform>
+                </Image>
+            </Grid>
+        </Button>
 
         <ListBox x:Name="inbox_listBox" SelectionChanged="inbox_listBox_SelectionChanged" DisplayMemberPath="Subject" HorizontalAlignment="Left" d:ItemsSource="{d:SampleData ItemCount=5}" ItemsSource="{Binding Path=Emails}" Margin="5,44,0,10" Width="120" Height="auto"/>
 
@@ -43,8 +59,13 @@
                 </ScrollViewer>
             </Grid>
 
-            <Button x:Name="reply_button" IsEnabled="{Binding Path=IsEmailSendingInUse}" Click="reply_button_Click" Content="Reply" HorizontalAlignment="Right" Margin="0,0,7,20" VerticalAlignment="Bottom" Height="40" Width="85"/>
-            <CheckBox x:Name="replyToAll_checkBox" IsEnabled="{Binding Path=IsEmailSendingInUse}" Content="Reply To All" HorizontalAlignment="Right" Margin="0,0,9,3" VerticalAlignment="Bottom"/>
+            <Button x:Name="reply_button" Style="{StaticResource RoundedNoHighlight}" IsEnabled="{Binding Path=IsEmailSendingInUse}" Click="reply_button_Click" HorizontalAlignment="Right" Margin="0,0,7,28" VerticalAlignment="Bottom" Height="30" Width="85">
+                <Grid x:Name="reply_button_controlGrid" Height="{Binding ActualHeight, ElementName=reply_button}" Width="{Binding ActualWidth, ElementName=reply_button}">
+                    <Border x:Name="reply_button_highlightRect" Background="DarkGray"  Opacity="0.0" CornerRadius="10" Margin="-1,-1,1,0"/>
+                    <TextBlock x:Name="reply_button_textBlock" Text="Reply" FontSize="12" FontWeight="SemiBold" TextAlignment="Center" Foreground="Black" Margin="-1,5,1,0"/>
+                </Grid>
+            </Button>
+            <CheckBox x:Name="replyToAll_checkBox" IsEnabled="{Binding Path=IsEmailSendingInUse}" Content="Reply To All" HorizontalAlignment="Right" Margin="0,0,9,11" VerticalAlignment="Bottom"/>
             <TextBox x:Name="sendReplyInput_textBox" TextWrapping="Wrap" IsEnabled="{Binding Path=IsEmailSendingInUse}" VerticalAlignment="Bottom" Margin="0,0,105,0" Height="70"/>
             <TextBlock x:Name="replyBodyWatermark_textBlock" Text="Body..." IsHitTestVisible="False" Opacity="0.75" Foreground="#FFA2A2A2" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="15" FontWeight="Bold" Width="64" Margin="5,0,0,47">
                 <TextBlock.Style>
@@ -71,8 +92,21 @@
             <Grid  x:Name="composePanelInner_grid">
                 <Border x:Name="composeTitleBar_border" Background="AliceBlue" VerticalAlignment="Top" CornerRadius="10,10,0,0" Height="28">
                     <Grid>
-                        <Button x:Name="composeTitleBarClose_button" Content="X" Click="composeTitleBarClose_button_Click" Margin="0,5,5,0" HorizontalAlignment="Right" VerticalAlignment="Top" Width="22"/>
-                        <Button x:Name="composeTitleBarMinimizeMaximize_button" Content="_" Click="composeTitleBarMinimizeMaximize_button_Click" Margin="0,5,33,0" HorizontalAlignment="Right" VerticalAlignment="Top" Width="22"/>
+                        <Button x:Name="composeTitleBarClose_button" Style="{StaticResource ToolbarNoHighlight}" Click="composeTitleBarClose_button_Click" Margin="0,0,5,0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="22" Height="22">
+                            <Grid x:Name="composeTitleBarClose_button_controlGrid" Height="{Binding ActualHeight, ElementName=composeTitleBarClose_button}" Width="{Binding ActualWidth, ElementName=composeTitleBarClose_button}">
+                                <Border x:Name="composeTitleBarClose_button_highlightRect" Background="DarkGray" Opacity="0.0" CornerRadius="5" Margin="-1,-1,1,0"/>
+                                <TextBlock x:Name="composeTitleBarClose_button_textBlock" FontWeight="Bold" Text="X" TextAlignment="Center" Foreground="Black" FontSize="17" Margin="0,-1,2,3" />
+                                <Image x:Name="composeTitleBarClose_button_image" RenderOptions.BitmapScalingMode="HighQuality" Stretch="Uniform" Source="/Images/ComposeIcon.png" Margin="-1,0,77,0"/>
+                            </Grid>
+                        </Button>
+
+                        <Button x:Name="composeTitleBarMinimizeMaximize_button" Style="{StaticResource ToolbarNoHighlight}" Click="composeTitleBarMinimizeMaximize_button_Click" Margin="0,0,30,0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="22" Height="20">
+                            <Grid x:Name="composeTitleBarMinimizeMaximize_button_controlGrid" Height="{Binding ActualHeight, ElementName=composeTitleBarMinimizeMaximize_button}" Width="{Binding ActualWidth, ElementName=composeTitleBarMinimizeMaximize_button}">
+                                <Border x:Name="composeTitleBarMinimizeMaximize_button_highlightRect" Background="DarkGray" Opacity="0.0" CornerRadius="5" Margin="-1,-1,1,0"/>
+                                <TextBlock x:Name="composeTitleBarMinimizeMaximize_button_textBlock" FontWeight="Bold" Text="-" TextAlignment="Center" Foreground="Black" FontSize="17" Margin="-1,-3,1,2" />
+                                <Image x:Name="composeTitleBarMinimizeMaximize_button_image" RenderOptions.BitmapScalingMode="HighQuality" Stretch="Uniform" Source="/Images/ComposeIcon.png" Margin="-1,0,77,0"/>
+                            </Grid>
+                        </Button>
                         <TextBlock x:Name="composeTitleBarHeader_textBlock" Width="400" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Text="{Binding Path=Text, ElementName=composeSubject_textBox}" Margin="10,5,0,0"/>
                     </Grid>
                 </Border>
@@ -179,7 +213,12 @@
 
                 <TextBlock x:Name="composeError_textBlock" Text="{Binding Path=ComposeErrorMessage}" Margin="10,278,123,27" Foreground="Red" FontSize="10" />
 
-                <Button x:Name="composeSend_button" IsEnabled="{Binding Path=IsEmailSendingInUse}" Click="composeSend_button_Click" Content="Send" Margin="385,283,13,15"/>
+                <Button x:Name="composeSend_button" Style="{StaticResource RoundedNoHighlight}" IsEnabled="{Binding Path=IsEmailSendingInUse}" Click="composeSend_button_Click" Margin="385,286,13,12">
+                    <Grid x:Name="composeSend_button_controlGrid" Height="{Binding ActualHeight, ElementName=composeSend_button}" Width="{Binding ActualWidth, ElementName=composeSend_button}">
+                        <Border x:Name="composeSend_button_highlightRect" Background="DarkGray"  Opacity="0.0" CornerRadius="10" Margin="-1,-1,1,0"/>
+                        <TextBlock x:Name="composeSend_button_textBlock" Text="Send" FontSize="12" FontWeight="SemiBold" TextAlignment="Center" Foreground="Black" Margin="-1,3,1,0"/>
+                    </Grid>
+                </Button>
             </Grid>
         </Border>
 
@@ -189,7 +228,12 @@
 
                 <PasswordBox x:Name="password_passwordBox" PreviewKeyDown="password_passwordBox_PreviewKeyDown" Visibility="{Binding Path=DisplayLoginElements, Converter={StaticResource BooleanToVisbility}}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="342"/>
 
-                <Button x:Name="login_button" Content="Login" Visibility="{Binding Path=DisplayLoginElements, Converter={StaticResource BooleanToVisbility}}" Click="login_button_Click" HorizontalAlignment="Center" Margin="0,107,0,0" VerticalAlignment="Top" Width="70" Height="38"/>
+                <Button x:Name="login_button" Style="{StaticResource RoundedNoHighlight}" Visibility="{Binding Path=DisplayLoginElements, Converter={StaticResource BooleanToVisbility}}" Click="login_button_Click" HorizontalAlignment="Center" Margin="0,107,0,0" VerticalAlignment="Top" Width="70" Height="38">
+                    <Grid x:Name="login_button_controlGrid" Height="{Binding ActualHeight, ElementName=login_button}" Width="{Binding ActualWidth, ElementName=login_button}">
+                        <Border x:Name="login_button_highlightRect" Background="DarkGray"  Opacity="0.0" CornerRadius="10" Margin="-1,-1,1,0"/>
+                        <TextBlock x:Name="login_button_textBlock" Text="Login" FontSize="20" FontWeight="SemiBold" TextAlignment="Center" Foreground="Black" Margin="-1,3,1,0"/>
+                    </Grid>
+                </Button>
 
                 <TextBlock x:Name="authenticationFeedback_textBlock" Visibility="{Binding Path=LoggingIn, Converter={StaticResource BooleanToVisbility}}" Text="{Binding Path=LoadingStatus}" HorizontalAlignment="center" Margin="0,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="25"/>
                 <TextBlock x:Name="userName_textBlock" Visibility="{Binding Path=DisplayLoginElements, Converter={StaticResource BooleanToVisbility}}" HorizontalAlignment="Left" Margin="12,12,0,0" TextWrapping="Wrap" Text="Username (Email)" VerticalAlignment="Top"/>
@@ -198,6 +242,6 @@
             </Grid>
         </Border>
 
-        <TextBlock x:Name="inboxHeader_textBlock" HorizontalAlignment="Left" Margin="5,28,0,0" TextWrapping="Wrap" Text="Inbox" VerticalAlignment="Top"/>
+        <TextBlock x:Name="inboxHeader_textBlock"   HorizontalAlignment="Left" Margin="5,23,0,0" TextWrapping="Wrap" Text="Inbox" VerticalAlignment="Top" FontSize="18" Height="21"/>
     </Grid>
 </Window>

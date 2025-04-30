@@ -1,4 +1,5 @@
 ﻿using BasicMailSharedClasses;
+using BasicMailStylization;
 using MimeKit;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,8 @@ using System.Security;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Input;
 using static BasicMailSharedPublicStructs.PublicStructs;
 
 namespace BasicMail.ViewModels.Main
@@ -34,7 +37,6 @@ namespace BasicMail.ViewModels.Main
         private String sender = "";
         private String date = "";
         private String body = "";
-
 
         public ObservableCollection<Email> Emails
         {

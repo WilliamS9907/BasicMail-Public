@@ -1,4 +1,4 @@
-Libraries: Mailkit, Mimekit, Newtonsoft, BasicMailAPI (in-house), BasicMailSharedClasses (in-house)
+Libraries: Mailkit, Mimekit, Newtonsoft, BasicMailAPI (in-house), BasicMailSharedClasses (in-house), IonStylization (in-house)
 Language: C#
 Framework/Frontend: WPF
 
@@ -48,10 +48,6 @@ To access errors/stored actions:
 The action log defaults to the current app instances log. Each new app instance creates a new log. By clicking Open Log you can load in a previous
 instances action log to review information such as successfully sent emails, unsuccessfully sent emails, auth failures and all data
 related to those/other catches.
-
-
-I didn't go too crazy on the front-end due to time constraints but I can also whip up a full custom-suite frameworked
-frontend if you'd like me to!
 
 Let me know if you have any questions! 
 

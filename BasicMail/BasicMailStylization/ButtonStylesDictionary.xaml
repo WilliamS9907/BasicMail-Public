@@ -1,0 +1,85 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    x:Class="BasicMailStylization.ButtonStyleEventsLogic">
+    <!-- Standardized Button Styles -->
+    <Style x:Key="RoundedNoHighlight" TargetType="Button">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Cursor" Value="Hand" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Name="border" BorderThickness="1, 1, 1, 1" CornerRadius="10" BorderBrush="Black" Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <EventSetter Event="MouseEnter" Handler="RoundedMouseEnter"/>
+        <EventSetter Event="MouseLeave" Handler="RoundedMouseLeave"/>
+        <EventSetter Event="PreviewMouseDown" Handler="GenericPreviewMouseDown"/>
+        <EventSetter Event="PreviewMouseUp" Handler="GenericPreviewMouseUp"/>
+    </Style>
+
+    <Style x:Key="NoHighlight" TargetType="Button">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Cursor" Value="Hand" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Name="border" BorderThickness="0" BorderBrush="Black" Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <EventSetter Event="MouseEnter" Handler="StandardMouseEnter"/>
+        <EventSetter Event="MouseLeave" Handler="StandardMouseLeave"/>
+        <EventSetter Event="PreviewMouseDown" Handler="GenericPreviewMouseDown"/>
+        <EventSetter Event="PreviewMouseUp" Handler="GenericPreviewMouseUp"/>
+    </Style>
+
+    <Style x:Key="ToolbarNoHighlight" TargetType="Button">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Cursor" Value="Hand" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Name="border" BorderThickness="0" BorderBrush="Black" Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <EventSetter Event="MouseEnter" Handler="ToolbarMouseEnter"/>
+        <EventSetter Event="MouseLeave" Handler="ToolbarMouseLeave"/>
+        <EventSetter Event="PreviewMouseDown" Handler="GenericPreviewMouseDown"/>
+        <EventSetter Event="PreviewMouseUp" Handler="GenericPreviewMouseUp"/>
+    </Style>
+
+    <Style x:Key="RefreshButton" TargetType="Button">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Cursor" Value="Hand" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Name="border" BorderThickness="0" BorderBrush="Black" Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <EventSetter Event="MouseEnter" Handler="RefreshMouseEnter"/>
+        <EventSetter Event="MouseLeave" Handler="RefreshMouseLeave"/>
+        <EventSetter Event="PreviewMouseDown" Handler="GenericPreviewMouseDown"/>
+        <EventSetter Event="PreviewMouseUp" Handler="RefreshPreviewMouseUp"/>
+    </Style>
+    <!-- End Standardized Button Styles -->
+</ResourceDictionary>

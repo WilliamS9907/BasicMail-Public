@@ -41,7 +41,7 @@ namespace BasicMailAPI
                     imap.Authenticate(username, Common.SecureStringToString(password));
 
                     ReportLoginStatus("Opening Mailboxes...", statusTextBlock, statusTextBlockOwner);
-                    emails = GetInbox(imap.Inbox, statusTextBlock, statusTextBlockOwner);
+                    emails = GetInbox(Globals.inbox = imap.Inbox, statusTextBlock, statusTextBlockOwner);
 
                     ReportLoginStatus("Getting Mailbox Address...", statusTextBlock, statusTextBlockOwner);
                     Globals.usersMailboxAddress = GetUsersMailboxAddress(username, emails);
@@ -72,6 +72,26 @@ namespace BasicMailAPI
 
                 MimeMessage message = inbox.GetMessage(rawEmailId);
 
+                var report = message.Body as MultipartReport;
+
+                if (report != null && report.ReportType.ToLowerInvariant() == "delivery-status")
+                {
+                    foreach (var deliveryStatus in report.OfType<MessageDeliveryStatus>())
+                    {
+                        foreach (var statusGroup in deliveryStatus.StatusGroups)
+                        {
+                            // The Original-Envelope-Id will match the string that you returned in the custom SmtpClient.GetEnvelopeId() method
+                            var envelopeId = statusGroup["Original-Envelope-Id"];
+
+                            // This value will be in the form "rfc822;recipient@example.com"
+                            var recipient = statusGroup["Original-Recipient"];
+                            var address = recipient != null ? recipient.Split(';')[1] : null;
+
+                            // The Action value will be "failed", "delayed", etc.
+                            var action = statusGroup["Action"];
+                        }
+                    }
+                }
 
                 emails.Add(new Email
                 {

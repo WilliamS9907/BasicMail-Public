@@ -11,8 +11,13 @@
         Title="Action Log" Height="310" Width="525">
     <Grid>
         <ListBox x:Name="logEntries_listBox" SelectionChanged="logEntries_listBox_SelectionChanged" d:ItemsSource="{d:SampleData ItemCount=5}" HorizontalAlignment="Left" DisplayMemberPath="title" Width="96" Margin="5,29,0,5"/>
-        <Button x:Name="openLog_button" Content="Open Log" Click="openLog_button_Click" HorizontalAlignment="Left" Margin="8,4,0,0" VerticalAlignment="Top" Width="90"/>
-        
+        <Button x:Name="openLog_button" Style="{StaticResource RoundedNoHighlight}" Click="openLog_button_Click" HorizontalAlignment="Left" Margin="8,4,0,0" VerticalAlignment="Top" Width="90" Height="23">
+            <Grid x:Name="openLog_button_controlGrid" Height="{Binding ActualHeight, ElementName=openLog_button}" Width="{Binding ActualWidth, ElementName=openLog_button}">
+                <Border x:Name="openLog_button_highlightRect" Background="DarkGray"  Opacity="0.0" CornerRadius="10" Margin="-1,-1,1,0"/>
+                <TextBlock x:Name="openLog_button_textBlock" Text="Open Log" FontSize="12" FontWeight="SemiBold" TextAlignment="Center" Foreground="Black" Margin="-1,1,1,0"/>
+            </Grid>
+        </Button>
+
         <ScrollViewer x:Name="logEntry_scrollViewer"  Margin="106,10,10,5">
             <Grid x:Name="logEntry_Grid">
                 <TextBlock x:Name="logEntry_textBlock" TextWrapping="Wrap"/>

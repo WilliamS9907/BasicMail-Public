@@ -6,11 +6,25 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
-    <ApplicationIcon>file-tk-email-icon-svg-28.ico</ApplicationIcon>
+    <ApplicationIcon>BasicMail.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="file-tk-email-icon-svg-28.ico" />
+    <None Remove="Images\ComposeIcon.png" />
+    <None Remove="Images\RefreshIcon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Images\RefreshIcon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="BasicMail.ico" />
+    <Content Include="Images\ComposeIcon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
@@ -21,6 +35,7 @@
   <ItemGroup>
     <ProjectReference Include="..\BasicMailAPI\BasicMailAPI.csproj" />
     <ProjectReference Include="..\BasicMailSharedClasses\BasicMailSharedClasses.csproj" />
+    <ProjectReference Include="..\BasicMailStylization\BasicMailStylization.csproj" />
   </ItemGroup>
 
 </Project>

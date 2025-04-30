@@ -139,7 +139,7 @@ namespace BasicMail
             Exception reportedException = new Exception();
             Email? inboxSelection = inbox_listBox.SelectedItem != null ? (Email)inbox_listBox.SelectedItem! : null;
 
-            reply_button.Content = "Replying...";
+            reply_button_textBlock.Text = "Replying...";
             Globals.mainView.SendingEmail = true;
 
             for (int i = 0; i < maxSendAttempts; i++)
@@ -185,7 +185,7 @@ namespace BasicMail
                 }
                 catch (Exception ex)
                 {
-                    HandleRetryReport(reply_button, i);
+                    HandleRetryReport(reply_button_textBlock, i);
 
                     await Task.Delay(1000);
 
@@ -202,7 +202,7 @@ namespace BasicMail
                 HandleSendingError(reportedException, true);
             }
 
-            reply_button.Content = "Reply";
+            reply_button_textBlock.Text = "Reply";
             Globals.mainView.SendingEmail = false;
         }
 
@@ -220,7 +220,7 @@ namespace BasicMail
             Boolean sendingFailed = false;
             Exception reportedException = new Exception();
 
-            composeSend_button.Content = "Sending...";
+            composeSend_button_textBlock.Text = "Sending...";
             Globals.mainView.SendingEmail = true;
 
             for (int i = 0; i < maxSendAttempts; i++)
@@ -252,7 +252,7 @@ namespace BasicMail
                 }
                 catch (Exception ex)
                 {
-                    HandleRetryReport(composeSend_button, i);
+                    HandleRetryReport(composeSend_button_textBlock, i);
 
                     await Task.Delay(1000);
 
@@ -270,7 +270,7 @@ namespace BasicMail
             }
 
             Globals.mainView.SendingEmail = false;
-            composeSend_button.Content = "Send";
+            composeSend_button_textBlock.Text = "Send";
         }
         #endregion Send New
 
@@ -286,9 +286,9 @@ namespace BasicMail
             Globals.mainView.SendingEmail = false;
         }
 
-        private void HandleRetryReport(Button mainButtonControl, Int32 numberOfAttempts)
+        private void HandleRetryReport(TextBlock mainButtonTextControl, Int32 numberOfAttempts)
         {
-            mainButtonControl.Content = "Retrying (" + (numberOfAttempts + 1) + ")...";
+            mainButtonTextControl.Text = "Retrying (" + (numberOfAttempts + 1) + ")...";
         }
 
         private void HandleSendingError(Exception ex, Boolean reply = false)
@@ -378,7 +378,7 @@ namespace BasicMail
             composePanelOuter_border.Height = 325;
             composePanelOuter_border.Width = 490;
             composeTitleBarHeader_textBlock.Width = 400;
-            composeTitleBarMinimizeMaximize_button.Content = "_";
+            composeTitleBarMinimizeMaximize_button_textBlock.Text = "-";
         }
 
         private void MinimizeCompositionPanel()
@@ -386,7 +386,7 @@ namespace BasicMail
             composePanelOuter_border.Height = composeTitleBar_border.ActualHeight;
             composePanelOuter_border.Width = 100;
             composeTitleBarHeader_textBlock.Width = 25;
-            composeTitleBarMinimizeMaximize_button.Content = "🗖";
+            composeTitleBarMinimizeMaximize_button_textBlock.Text = "🗖";
         }
 
         private void composeTitleBarClose_button_Click(object sender, RoutedEventArgs e)

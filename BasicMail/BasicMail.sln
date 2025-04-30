@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasicMail", "BasicMail\Basi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasicMailAPI", "BasicMailAPI\BasicMailAPI.csproj", "{7AED3AEC-2D3C-44AA-A242-751DBC1B05CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicMailSharedClasses", "BasicMailSharedClasses\BasicMailSharedClasses.csproj", "{E501D120-BED2-4BA8-80A7-400A43DA6687}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasicMailSharedClasses", "BasicMailSharedClasses\BasicMailSharedClasses.csproj", "{E501D120-BED2-4BA8-80A7-400A43DA6687}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasicMailStylization", "BasicMailStylization\BasicMailStylization.csproj", "{8271AFBE-BB94-4367-93BD-2349BFF76FD8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +57,18 @@ Global
 		{E501D120-BED2-4BA8-80A7-400A43DA6687}.Release|x64.Build.0 = Release|Any CPU
 		{E501D120-BED2-4BA8-80A7-400A43DA6687}.Release|x86.ActiveCfg = Release|Any CPU
 		{E501D120-BED2-4BA8-80A7-400A43DA6687}.Release|x86.Build.0 = Release|Any CPU
+		{8271AFBE-BB94-4367-93BD-2349BFF76FD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8271AFBE-BB94-4367-93BD-2349BFF76FD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8271AFBE-BB94-4367-93BD-2349BFF76FD8}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{8271AFBE-BB94-4367-93BD-2349BFF76FD8}.Debug|x64.Build.0 = Debug|Any CPU
+		{8271AFBE-BB94-4367-93BD-2349BFF76FD8}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8271AFBE-BB94-4367-93BD-2349BFF76FD8}.Debug|x86.Build.0 = Debug|Any CPU
+		{8271AFBE-BB94-4367-93BD-2349BFF76FD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8271AFBE-BB94-4367-93BD-2349BFF76FD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8271AFBE-BB94-4367-93BD-2349BFF76FD8}.Release|x64.ActiveCfg = Release|Any CPU
+		{8271AFBE-BB94-4367-93BD-2349BFF76FD8}.Release|x64.Build.0 = Release|Any CPU
+		{8271AFBE-BB94-4367-93BD-2349BFF76FD8}.Release|x86.ActiveCfg = Release|Any CPU
+		{8271AFBE-BB94-4367-93BD-2349BFF76FD8}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

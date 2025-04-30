@@ -38,6 +38,11 @@
             <TextBlock x:Name="password_textBlock" HorizontalAlignment="Left" Margin="10,41,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top"/>
         </Grid>
 
-        <Button x:Name="save_button" Content="Save" HorizontalAlignment="Left" Click="save_button_Click" Margin="260,174,0,0" VerticalAlignment="Top" Width="70"/>
+        <Button x:Name="save_button" Style="{StaticResource RoundedNoHighlight}" HorizontalAlignment="Left" Click="save_button_Click" Margin="268,174,0,0" VerticalAlignment="Top" Width="62" Height="22">
+            <Grid x:Name="save_button_controlGrid" Height="{Binding ActualHeight, ElementName=save_button}" Width="{Binding ActualWidth, ElementName=save_button}">
+                <Border x:Name="save_button_highlightRect" Background="DarkGray"  Opacity="0.0" CornerRadius="10" Margin="-1,-1,1,0"/>
+                <TextBlock x:Name="save_button_textBlock" Text="Save" FontSize="12" FontWeight="SemiBold" TextAlignment="Center" Foreground="Black" Margin="-1,1,1,0"/>
+            </Grid>
+        </Button>
     </Grid>
 </Window>

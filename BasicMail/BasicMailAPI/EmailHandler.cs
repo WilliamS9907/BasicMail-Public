@@ -1,8 +1,10 @@
 
 using BasicMailAPI.Generic;
 using BasicMailSharedClasses;
+using MailKit.Net.Imap;
 using MailKit.Net.Smtp;
 using MimeKit;
+using System;
 using System.IO;
 using System.Security;
 using System.Windows;
