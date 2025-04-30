@@ -116,32 +116,6 @@ namespace BasicMailStylization
             highlightRect.Opacity = 0.0;
         }
 
-        private void RotateRefreshButton(object sender, EventArgs e)
-        {
-            if (transformOfImageOfRefreshButton!.Angle <= -180
-                && !refreshLoopAnim)
-            {
-                refreshAnimTimer.Stop();
-            }
-            else
-            {
-                if (refreshLoopAnim
-                    && refreshButton.IsEnabled)
-                {
-                    StopRotating();
-                }
-
-                transformOfImageOfRefreshButton.Angle = transformOfImageOfRefreshButton.Angle - 10;
-            }
-        }
-
-        private void StopRotating()
-        {
-            refreshLoopAnim = false;
-            transformOfImageOfRefreshButton!.Angle = 0.0;
-            refreshAnimTimer.Stop();
-        }
-
         private void IncreaseOpacityOfHighlightRect(Object sender, EventArgs e)
         {
             switch (highlightRect.Opacity)
@@ -157,7 +131,7 @@ namespace BasicMailStylization
         }
         #endregion Mouse Highlight
 
-        #region Mouse Click Anim
+        #region Animations
         private void GenericPreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
             textBlockOfButtonDown = GetChildOfGridOfType<TextBlock>((Grid)((Button)sender).Content, typeof(TextBlock));
@@ -193,7 +167,33 @@ namespace BasicMailStylization
 
             refreshAnimTimer.Start();
         }
-        #endregion Mouse Click Anim
+
+        private void RotateRefreshButton(object sender, EventArgs e)
+        {
+            if (transformOfImageOfRefreshButton!.Angle <= -180
+                && !refreshLoopAnim)
+            {
+                refreshAnimTimer.Stop();
+            }
+            else
+            {
+                if (refreshLoopAnim
+                    && refreshButton.IsEnabled)
+                {
+                    StopRotating();
+                }
+
+                transformOfImageOfRefreshButton.Angle = transformOfImageOfRefreshButton.Angle - 10;
+            }
+        }
+
+        private void StopRotating()
+        {
+            refreshLoopAnim = false;
+            transformOfImageOfRefreshButton!.Angle = 0.0;
+            refreshAnimTimer.Stop();
+        }
+        #endregion Animations
 
         #region Common Element Modification(s)
         private void IncreaseButtonWidthAndHeight(Button sender)
